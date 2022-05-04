@@ -1,10 +1,14 @@
-package com.example.pf
+package com.example.pf.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.NavDirections
+import androidx.navigation.findNavController
+import com.example.pf.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,9 +21,11 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class login : Fragment() {
-    // TODO: Rename and change types of parameters
+
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var loginView: View
+    lateinit var loginButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +40,21 @@ class login : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        loginView = inflater.inflate(R.layout.fragment_login, container, false)
+        loginButton = loginView.findViewById(R.id.loginButton)
+        return loginView
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        loginButton.setOnClickListener {
+
+            //TODO: no se genera la clase directions para este fragment
+            //val goToRegister = loginDirections.algo()
+            //loginView.findNavController().navigate(goToRegister)
+
+        }
     }
 
     companion object {
